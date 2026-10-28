@@ -1,0 +1,2170 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Химия | Джураев Муслим Тариэльевич</title>
+
+<style>
+:root {
+    --bg: #f1f8ff;
+    --card: #ffffff;
+    --text: #173e70;
+    --muted: #617b9b;
+    --blue: #3186e8;
+    --blue2: #dceeff;
+    --green: #39ad7a;
+    --purple: #9270e8;
+    --border: #d5e7fa;
+    --shadow: 0 8px 25px rgba(39, 100, 170, .08);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 90px;
+}
+
+body {
+    margin: 0;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    transition: background .25s, color .25s;
+}
+
+body.dark {
+    --bg: #101b2d;
+    --card: #1c2b42;
+    --text: #e5efff;
+    --muted: #b4c7e0;
+    --blue: #69aaff;
+    --blue2: #263e5c;
+    --border: #354a66;
+    --shadow: 0 8px 25px rgba(0, 0, 0, .15);
+}
+
+button {
+    font: inherit;
+    cursor: pointer;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible {
+    outline: 3px solid #f2bd57;
+    outline-offset: 3px;
+}
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--card);
+    border-bottom: 1px solid var(--border);
+    box-shadow: var(--shadow);
+}
+
+.header-inner {
+    max-width: 1500px;
+    margin: auto;
+    min-height: 76px;
+    padding: 12px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+}
+
+.logo {
+    font-size: 39px;
+}
+
+.brand h1 {
+    font-size: 19px;
+    margin: 0 0 5px;
+}
+
+.brand p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: var(--card);
+    color: var(--text);
+    padding: 10px 14px;
+    transition: transform .2s, background .2s;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    background: var(--blue2);
+}
+
+.btn.primary {
+    background: var(--blue);
+    color: white;
+    border-color: transparent;
+}
+
+.btn:disabled {
+    opacity: .45;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.progress-wrap {
+    height: 4px;
+    background: var(--blue2);
+}
+
+.progress-bar {
+    height: 4px;
+    width: 0;
+    background: linear-gradient(90deg, #45a4ff, #48c69a);
+    transition: width .25s;
+}
+
+.container {
+    max-width: 1500px;
+    margin: auto;
+    padding: 22px;
+}
+
+.hero {
+    min-height: 225px;
+    border-radius: 24px;
+    padding: 35px;
+    background: linear-gradient(115deg, #d9efff, #f3fbff 52%, #d9f8e7);
+    color: #174b87;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 25px;
+    overflow: hidden;
+    margin-bottom: 22px;
+}
+
+body.dark .hero {
+    background: linear-gradient(115deg, #233e5d, #25384e 52%, #214c46);
+    color: #e5f2ff;
+}
+
+.hero-text {
+    max-width: 720px;
+}
+
+.hero h2 {
+    font-size: clamp(28px, 4vw, 43px);
+    margin: 0 0 13px;
+}
+
+.hero p {
+    font-size: 17px;
+    line-height: 1.7;
+    margin: 0 0 18px;
+}
+
+.hero-art {
+    font-size: clamp(65px, 10vw, 115px);
+    white-space: nowrap;
+    animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-9px); }
+}
+
+.layout {
+    display: grid;
+    grid-template-columns: 250px minmax(0, 1fr) 255px;
+    gap: 20px;
+    align-items: start;
+}
+
+.panel {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 19px;
+    box-shadow: var(--shadow);
+}
+
+.sidebar {
+    padding: 15px;
+    position: sticky;
+    top: 98px;
+    max-height: calc(100vh - 115px);
+    overflow-y: auto;
+    scrollbar-width: thin;
+}
+
+.sidebar h3 {
+    margin: 8px 0 14px;
+}
+
+.nav-button {
+    display: block;
+    width: 100%;
+    text-align: left;
+    border: none;
+    padding: 10px;
+    margin: 3px 0;
+    border-radius: 10px;
+    background: transparent;
+    color: var(--text);
+    font-size: 13px;
+    line-height: 1.4;
+}
+
+.nav-button:hover,
+.nav-button.active {
+    background: var(--blue2);
+    color: var(--blue);
+}
+
+.nav-button.active {
+    font-weight: 700;
+}
+
+.nav-group {
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 9px;
+    margin-bottom: 10px;
+}
+
+.nav-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 6px;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.subnav {
+    margin-left: 8px;
+}
+
+.main {
+    min-width: 0;
+}
+
+.content {
+    padding: 25px;
+    min-height: 500px;
+}
+
+.page-heading {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 15px;
+    margin-bottom: 23px;
+}
+
+.page-heading .icon {
+    font-size: 35px;
+}
+
+.page-heading h2 {
+    margin: 0;
+    font-size: 22px;
+}
+
+.slide-title {
+    font-size: clamp(25px, 3vw, 35px);
+    margin: 0 0 18px;
+    line-height: 1.25;
+}
+
+.lead {
+    font-size: 17px;
+    line-height: 1.8;
+    color: var(--muted);
+}
+
+.lesson-text {
+    font-size: 16px;
+    line-height: 1.85;
+}
+
+.lesson-text h3 {
+    margin-top: 24px;
+    font-size: 21px;
+}
+
+.lesson-text li {
+    margin-bottom: 9px;
+}
+
+.lesson-text strong {
+    color: var(--blue);
+}
+
+.note {
+    border-left: 5px solid var(--blue);
+    border-radius: 12px;
+    background: var(--blue2);
+    padding: 16px 18px;
+    margin: 22px 0;
+    line-height: 1.7;
+}
+
+.note.green {
+    border-left-color: var(--green);
+}
+
+.note.purple {
+    border-left-color: var(--purple);
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.card {
+    padding: 20px;
+    border-radius: 17px;
+    border: 1px solid var(--border);
+    background: var(--card);
+    text-align: center;
+    transition: transform .2s, box-shadow .2s;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow);
+}
+
+.card .emoji {
+    font-size: 46px;
+}
+
+.card h3 {
+    font-size: 18px;
+    margin: 12px 0;
+}
+
+.card p {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--muted);
+}
+
+.card.blue {
+    background: linear-gradient(145deg, var(--card), #e2f3ff);
+}
+
+.card.purple {
+    background: linear-gradient(145deg, var(--card), #eee6ff);
+}
+
+.card.green {
+    background: linear-gradient(145deg, var(--card), #e0f8e9);
+}
+
+body.dark .card.blue,
+body.dark .card.purple,
+body.dark .card.green {
+    background: var(--card);
+}
+
+.table-wrap {
+    overflow-x: auto;
+    margin: 20px 0;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 450px;
+}
+
+th, td {
+    text-align: left;
+    border: 1px solid var(--border);
+    padding: 13px;
+    line-height: 1.6;
+}
+
+th {
+    background: var(--blue2);
+}
+
+tr:nth-child(even) td {
+    background: rgba(90, 150, 220, .035);
+}
+
+.slide-navigation {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 18px 0 0;
+    margin-top: 25px;
+    border-top: 1px solid var(--border);
+}
+
+.slide-counter {
+    text-align: center;
+    color: var(--muted);
+    padding: 10px;
+    font-size: 13px;
+}
+
+.side-right {
+    display: grid;
+    gap: 20px;
+}
+
+.side-card {
+    padding: 19px;
+}
+
+.side-card h3 {
+    margin: 0 0 15px;
+}
+
+.fact {
+    padding: 13px 0;
+    border-bottom: 1px solid var(--border);
+    line-height: 1.6;
+    font-size: 14px;
+}
+
+.fact:last-child {
+    border: none;
+}
+
+.quote {
+    font-size: 17px;
+    line-height: 1.8;
+    font-style: italic;
+    color: var(--muted);
+}
+
+footer {
+    margin-top: 25px;
+    padding: 24px;
+    text-align: center;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.quiz-question {
+    border: 1px solid var(--border);
+    border-radius: 15px;
+    padding: 18px;
+    margin: 16px 0;
+}
+
+.quiz-question h3 {
+    font-size: 17px;
+    margin-top: 0;
+}
+
+.answer {
+    display: block;
+    width: 100%;
+    text-align: left;
+    padding: 12px 14px;
+    margin: 8px 0;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--card);
+    color: var(--text);
+    transition: background .2s;
+}
+
+.answer:hover {
+    background: var(--blue2);
+}
+
+.answer.correct {
+    border-color: #32ae76;
+    background: #d9f8e7;
+    color: #145e3a;
+}
+
+.answer.wrong {
+    border-color: #e07c7c;
+    background: #ffe5e5;
+    color: #8c2727;
+}
+
+.feedback {
+    margin-top: 10px;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.score-box {
+    display: none;
+    padding: 22px;
+    border-radius: 16px;
+    background: var(--blue2);
+    margin-top: 20px;
+    text-align: center;
+}
+
+.score-box h3 {
+    font-size: 28px;
+}
+
+.search-box {
+    width: 100%;
+    padding: 11px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--card);
+    color: var(--text);
+    margin-bottom: 12px;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.home-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.resources a {
+    color: var(--blue);
+}
+
+.lesson-check {
+    padding: 15px;
+    background: var(--blue2);
+    border-radius: 12px;
+    margin: 15px 0;
+}
+
+.small {
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+@media (max-width: 1100px) {
+    .layout {
+        grid-template-columns: 230px minmax(0, 1fr);
+    }
+
+    .side-right {
+        grid-column: 1 / -1;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 720px) {
+    .header-inner {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 13px;
+    }
+
+    .header-actions {
+        width: 100%;
+    }
+
+    .container {
+        padding: 12px;
+    }
+
+    .hero {
+        padding: 23px;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .hero-art {
+        font-size: 65px;
+    }
+
+    .layout {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .sidebar {
+        position: static;
+        max-height: none;
+    }
+
+    .cards {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .side-right {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .content {
+        padding: 18px;
+    }
+
+    .brand h1 {
+        font-size: 16px;
+    }
+
+    .slide-navigation {
+        flex-wrap: wrap;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="header-inner">
+
+        <div class="brand">
+            <div class="logo">⚛️</div>
+            <div>
+                <h1>Джураев Муслим Тариэльевич</h1>
+                <p>Преподаватель · Химия · 6 класс</p>
+            </div>
+        </div>
+
+        <div class="header-actions">
+            <button class="btn" onclick="goHome()">⌂ Главная</button>
+            <button class="btn" onclick="showSlide(0)">📖 Презентация</button>
+            <button class="btn" onclick="showQuiz()">✓ Тест</button>
+            <button class="btn" onclick="showAbout()">👤 О сайте</button>
+            <button class="btn" id="themeBtn" onclick="toggleTheme()">
+                🌙 Тема
+            </button>
+        </div>
+
+    </div>
+
+    <div class="progress-wrap">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+</header>
+
+<div class="container">
+
+    <section class="hero">
+        <div class="hero-text">
+            <h2>Добро пожаловать на урок химии!</h2>
+            <p>
+                Сегодня мы узнаем, что такое простые и сложные вещества,
+                чем чистые вещества отличаются от смесей и как разделять смеси.
+            </p>
+            <span>🎓 6 класс · Интерактивная презентация</span>
+        </div>
+
+        <div class="hero-art" aria-hidden="true">
+            🧪 ⚗️ 🧬
+        </div>
+    </section>
+
+    <div class="layout">
+
+        <!-- ЛЕВОЕ МЕНЮ -->
+
+        <aside class="panel sidebar">
+
+            <h3>📚 Оглавление</h3>
+
+            <input
+                type="search"
+                id="searchInput"
+                class="search-box"
+                placeholder="Найти тему..."
+                oninput="filterTopics()"
+                aria-label="Поиск по темам"
+            >
+
+            <button class="nav-button" onclick="goHome()">
+                🏠 Главная страница
+            </button>
+
+            <div class="nav-group">
+                <div class="nav-heading">
+                    <span>📖 Презентация</span>
+                    <span>⌄</span>
+                </div>
+
+                <div class="subnav" id="topicList"></div>
+            </div>
+
+            <button class="nav-button" onclick="showQuiz()">
+                📝 Проверочный тест
+            </button>
+
+            <button class="nav-button" onclick="showHomework()">
+                ✏️ Домашнее задание
+            </button>
+
+            <button class="nav-button" onclick="showAbout()">
+                👨‍🏫 Об авторе
+            </button>
+
+            <div class="note green">
+                <strong>Ученица:</strong><br>
+                Ева, 6 класс 🌿
+            </div>
+
+            <p class="small">
+                Учись сегодня — чтобы понимать мир завтра!
+            </p>
+
+        </aside>
+
+        <!-- ЦЕНТРАЛЬНАЯ ЧАСТЬ -->
+
+        <main class="main panel">
+            <div class="content" id="content">
+
+                <div class="page-heading">
+                    <span class="icon">⚛️</span>
+                    <h2>Главная страница</h2>
+                </div>
+
+                <h2 class="slide-title">
+                    Простые и сложные вещества. Смеси
+                </h2>
+
+                <p class="lead">
+                    Давай разберёмся, из чего состоят окружающие нас предметы
+                    и чем отличаются вещества от смесей!
+                </p>
+
+                <div class="cards">
+
+                    <div class="card blue">
+                        <div class="emoji">🔵</div>
+                        <h3>Простые вещества</h3>
+                        <p>
+                            Состоят из атомов одного химического элемента.
+                        </p>
+                        <button class="btn primary"
+                            onclick="showSlide(4)">
+                            Изучить →
+                        </button>
+                    </div>
+
+                    <div class="card purple">
+                        <div class="emoji">🧬</div>
+                        <h3>Сложные вещества</h3>
+                        <p>
+                            Содержат атомы двух или более разных элементов.
+                        </p>
+                        <button class="btn primary"
+                            onclick="showSlide(5)">
+                            Изучить →
+                        </button>
+                    </div>
+
+                    <div class="card green">
+                        <div class="emoji">🧪</div>
+                        <h3>Смеси</h3>
+                        <p>
+                            Состоят из нескольких веществ, сохраняющих
+                            свои химические свойства.
+                        </p>
+                        <button class="btn primary"
+                            onclick="showSlide(8)">
+                            Изучить →
+                        </button>
+                    </div>
+
+                </div>
+
+                <div class="note">
+                    🎯 <strong>Цель урока:</strong>
+                    научиться различать простые и сложные вещества,
+                    узнавать смеси и выбирать способы их разделения.
+                </div>
+
+                <h3>Быстрый доступ</h3>
+
+                <div class="cards">
+
+                    <div class="card">
+                        <div class="emoji">📖</div>
+                        <h3>Презентация</h3>
+                        <button class="btn"
+                            onclick="showSlide(0)">
+                            Начать урок
+                        </button>
+                    </div>
+
+                    <div class="card">
+                        <div class="emoji">✅</div>
+                        <h3>Тест</h3>
+                        <button class="btn"
+                            onclick="showQuiz()">
+                            Проверить знания
+                        </button>
+                    </div>
+
+                    <div class="card">
+                        <div class="emoji">✏️</div>
+                        <h3>Практика</h3>
+                        <button class="btn"
+                            onclick="showSlide(12)">
+                            Выполнить задания
+                        </button>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="slide-counter" id="slideCounter">
+                Главная страница
+            </div>
+
+            <div class="slide-navigation" style="padding: 0 20px 20px;">
+                <button class="btn" id="prevBtn"
+                    onclick="prevSlide()" disabled>
+                    ← Назад
+                </button>
+
+                <button class="btn primary" id="nextBtn"
+                    onclick="nextSlide()">
+                    Начать урок →
+                </button>
+            </div>
+
+        </main>
+
+        <!-- ПРАВАЯ КОЛОНКА -->
+
+        <aside class="side-right">
+
+            <div class="panel side-card">
+                <h3>🌱 Интересные факты</h3>
+
+                <div class="fact">
+                    💧 Вода — одно из самых распространённых веществ
+                    на Земле.
+                </div>
+
+                <div class="fact">
+                    💎 Алмаз и графит состоят из углерода, но имеют
+                    разное строение и свойства.
+                </div>
+
+                <div class="fact">
+                    ☁️ Воздух — смесь газов, в которой больше всего
+                    азота, а кислорода около 21%.
+                </div>
+
+                <div class="fact">
+                    🧂 Соль можно получить из солёной воды выпариванием.
+                </div>
+            </div>
+
+            <div class="panel side-card">
+                <h3>💬 Мудрая мысль</h3>
+
+                <p class="quote">
+                    «Химия помогает понять, из чего состоит мир
+                    вокруг нас».
+                </p>
+
+                <p class="small">
+                    Джураев Муслим Тариэльевич
+                </p>
+            </div>
+
+            <div class="panel side-card">
+                <h3>👩‍🎓 Информация об ученице</h3>
+
+                <p>Имя: <strong>Ева</strong></p>
+                <p>Класс: <strong>6</strong></p>
+                <p>Предмет: <strong>Химия</strong></p>
+
+                <div class="note green">
+                    Каждый новый урок — шаг к знаниям!
+                </div>
+            </div>
+
+        </aside>
+
+    </div>
+</div>
+
+<footer>
+    © 2026 · Джураев Муслим Тариэльевич, преподаватель
+    <br><br>
+    Ученица Ева · 6 класс · Химия
+    <br><br>
+    ⚛️ Учимся. Познаём. Развиваемся.
+</footer>
+
+<script>
+/* ==========================================
+   ДАННЫЕ ПРЕЗЕНТАЦИИ
+========================================== */
+
+const slides = [
+
+{
+title: "Тема урока",
+icon: "⚛️",
+body: `
+<p class="lead">
+Сегодня мы изучаем простые и сложные вещества, чистые вещества
+и смеси. Эти понятия помогают понять состав окружающего мира.
+</p>
+
+<div class="cards">
+    <div class="card blue">
+        <div class="emoji">🔵</div>
+        <h3>Простые вещества</h3>
+        <p>Состоят из атомов одного химического элемента.</p>
+    </div>
+    <div class="card purple">
+        <div class="emoji">🧬</div>
+        <h3>Сложные вещества</h3>
+        <p>Содержат атомы разных химических элементов.</p>
+    </div>
+    <div class="card green">
+        <div class="emoji">🧪</div>
+        <h3>Смеси</h3>
+        <p>Содержат несколько веществ.</p>
+    </div>
+</div>
+
+<div class="note">
+<strong>Вопрос урока:</strong> почему чистая вода, кислород
+и воздух относятся к разным группам?
+</div>
+
+<p>В конце презентации ты сможешь ответить на этот вопрос!</p>
+`
+},
+
+{
+title: "Что такое вещество?",
+icon: "🧱",
+body: `
+<p class="lead">
+Вещество — это то, из чего состоят физические тела.
+</p>
+
+<p>Например, стол — это тело, а древесина — материал, из которого
+он сделан. Стакан — тело, а стекло — вещество.</p>
+
+<div class="table-wrap">
+<table>
+<tr><th>Тело</th><th>Вещество</th></tr>
+<tr><td>Гвоздь</td><td>Железо</td></tr>
+<tr><td>Медная проволока</td><td>Медь</td></tr>
+<tr><td>Лёд</td><td>Вода в твёрдом состоянии</td></tr>
+<tr><td>Стеклянный стакан</td><td>Стекло</td></tr>
+<tr><td>Сахарный кубик</td><td>Сахар</td></tr>
+</table>
+</div>
+
+<div class="note">
+<strong>Запомни!</strong> Тело — предмет, а вещество — то,
+из чего он состоит.
+</div>
+
+<h3>Пример из жизни</h3>
+<p>Ложка может быть сделана из стали, алюминия или серебра.
+Форма у предмета похожая, но вещества разные.</p>
+`
+},
+
+{
+title: "Из чего состоят вещества?",
+icon: "⚛️",
+body: `
+<p class="lead">
+Вещества состоят из мельчайших частиц. В зависимости от вещества
+это могут быть атомы, молекулы или ионы.
+</p>
+
+<h3>Атом</h3>
+<p>Атом — мельчайшая частица химического элемента, сохраняющая
+его химическую индивидуальность.</p>
+
+<h3>Молекула</h3>
+<p>Молекула — частица вещества, состоящая из двух или более
+химически связанных атомов.</p>
+
+<div class="cards">
+<div class="card blue">
+<div class="emoji">🔴🔴</div>
+<h3>O₂</h3>
+<p>Молекула кислорода: два атома кислорода.</p>
+</div>
+
+<div class="card purple">
+<div class="emoji">⚪🔴⚪</div>
+<h3>H₂O</h3>
+<p>Молекула воды: два атома водорода и один атом кислорода.</p>
+</div>
+
+<div class="card green">
+<div class="emoji">⚫🔴🔴</div>
+<h3>CO₂</h3>
+<p>Молекула углекислого газа: один атом углерода и два атома кислорода.</p>
+</div>
+</div>
+
+<div class="note">
+Маленькая цифра в химической формуле показывает,
+сколько атомов данного элемента входит в молекулу.
+Если цифры нет, подразумевается один атом.
+</div>
+`
+},
+
+{
+title: "Какие бывают вещества?",
+icon: "🧪",
+body: `
+<p class="lead">
+По составу вещества делят на простые и сложные.
+</p>
+
+<div class="cards">
+<div class="card blue">
+<div class="emoji">🔵</div>
+<h3>Простые вещества</h3>
+<p>Состоят из атомов одного химического элемента.</p>
+<p><strong>O₂, H₂, Fe, Cu, S</strong></p>
+</div>
+
+<div class="card purple">
+<div class="emoji">🧬</div>
+<h3>Сложные вещества</h3>
+<p>Состоят из атомов разных химических элементов.</p>
+<p><strong>H₂O, CO₂, NaCl, NH₃</strong></p>
+</div>
+</div>
+
+<h3>Как различить их по формуле?</h3>
+<p>Посмотри на обозначения химических элементов.</p>
+
+<ul>
+<li>O₂: присутствует только элемент O — простое вещество.</li>
+<li>Fe: присутствует только элемент Fe — простое вещество.</li>
+<li>H₂O: присутствуют H и O — сложное вещество.</li>
+<li>CO₂: присутствуют C и O — сложное вещество.</li>
+<li>NaCl: присутствуют Na и Cl — сложное вещество.</li>
+</ul>
+
+<div class="note green">
+<strong>Главное правило:</strong> считай не количество атомов,
+а количество разных химических элементов в формуле.
+</div>
+`
+},
+
+{
+title: "Простые вещества",
+icon: "🔵",
+body: `
+<p class="lead">
+Простые вещества образованы атомами только одного химического элемента.
+</p>
+
+<h3>Кислород — O₂</h3>
+<p>Газ, необходимый большинству живых организмов для дыхания.
+Его молекула содержит два атома кислорода.</p>
+
+<h3>Водород — H₂</h3>
+<p>Очень лёгкий газ. Молекула водорода состоит из двух атомов
+химического элемента водорода.</p>
+
+<h3>Железо — Fe</h3>
+<p>Металл, который используют для изготовления инструментов,
+деталей и различных конструкций.</p>
+
+<h3>Медь — Cu</h3>
+<p>Металл, который хорошо проводит электрический ток.
+Поэтому его часто используют в электрических проводах.</p>
+
+<h3>Сера — S</h3>
+<p>Неметалл жёлтого цвета в обычных условиях.</p>
+
+<div class="note">
+Все перечисленные вещества простые: каждое из них образовано
+атомами только одного химического элемента.
+</div>
+`
+},
+
+{
+title: "Сложные вещества",
+icon: "🧬",
+body: `
+<p class="lead">
+Сложные вещества содержат атомы двух или более химических элементов.
+</p>
+
+<h3>Вода — H₂O</h3>
+<p>Содержит водород и кислород. В одной молекуле воды два атома
+водорода и один атом кислорода.</p>
+
+<h3>Углекислый газ — CO₂</h3>
+<p>Содержит углерод и кислород. Растения используют углекислый газ
+при фотосинтезе.</p>
+
+<h3>Поваренная соль — NaCl</h3>
+<p>Состоит из химических элементов натрия и хлора.
+В твёрдом состоянии соль образует кристаллическую решётку из ионов.</p>
+
+<h3>Аммиак — NH₃</h3>
+<p>Содержит азот и водород. Используется, в частности,
+в химической промышленности для производства удобрений.</p>
+
+<div class="note purple">
+<strong>Важно!</strong> Сложное вещество — не то же самое,
+что смесь. В сложном веществе атомы разных элементов
+химически связаны в составе единого вещества.
+</div>
+`
+},
+
+{
+title: "Сравним простые и сложные вещества",
+icon: "📊",
+body: `
+<p class="lead">Сравним две группы веществ.</p>
+
+<div class="table-wrap">
+<table>
+<tr>
+<th>Признак</th>
+<th>Простые вещества</th>
+<th>Сложные вещества</th>
+</tr>
+<tr>
+<td>Состав</td>
+<td>Один химический элемент</td>
+<td>Два или более элементов</td>
+</tr>
+<tr>
+<td>Примеры</td>
+<td>O₂, H₂, Fe, Cu</td>
+<td>H₂O, CO₂, NaCl</td>
+</tr>
+<tr>
+<td>Количество элементов</td>
+<td>Один</td>
+<td>Несколько</td>
+</tr>
+<tr>
+<td>Химическое разложение</td>
+<td>Нельзя обычной химической реакцией разложить на вещества других элементов</td>
+<td>Некоторые можно разложить химическими реакциями</td>
+</tr>
+</table>
+</div>
+
+<h3>Потренируйся</h3>
+<p>Определи, к какой группе относятся формулы:</p>
+
+<ul>
+<li>O₂ — простое вещество.</li>
+<li>H₂O — сложное вещество.</li>
+<li>Fe — простое вещество.</li>
+<li>CO₂ — сложное вещество.</li>
+<li>Cu — простое вещество.</li>
+<li>NaCl — сложное вещество.</li>
+</ul>
+`
+},
+
+{
+title: "Чистое вещество",
+icon: "💧",
+body: `
+<p class="lead">
+Чистое вещество имеет определённый химический состав
+и характерные свойства.
+</p>
+
+<p>Примеры чистых веществ:</p>
+
+<ul>
+<li>Дистиллированная вода.</li>
+<li>Чистый кислород.</li>
+<li>Чистое железо.</li>
+<li>Чистая поваренная соль.</li>
+</ul>
+
+<h3>Может ли чистое вещество быть сложным?</h3>
+<p>Да! Чистая вода — сложное вещество, состоящее из водорода
+и кислорода, но при этом она не является смесью.</p>
+
+<div class="note green">
+<strong>Запомни:</strong> «простое или сложное» показывает,
+из каких химических элементов состоит вещество.
+«Чистое вещество или смесь» показывает, сколько веществ
+содержится в рассматриваемом образце.
+</div>
+
+<h3>Пример</h3>
+<p>Чистая вода H₂O — сложное чистое вещество.
+Солёная вода — смесь воды и соли.</p>
+`
+},
+
+{
+title: "Что такое смесь?",
+icon: "🧪",
+body: `
+<p class="lead">
+Смесь — это сочетание двух или более веществ, которые
+находятся вместе и сохраняют свою химическую индивидуальность.
+</p>
+
+<div class="cards">
+<div class="card blue">
+<div class="emoji">🌬️</div>
+<h3>Воздух</h3>
+<p>Смесь азота, кислорода и других газов.</p>
+</div>
+
+<div class="card purple">
+<div class="emoji">🥤</div>
+<h3>Солёная вода</h3>
+<p>Смесь воды и растворённой соли.</p>
+</div>
+
+<div class="card green">
+<div class="emoji">🏖️</div>
+<h3>Песок с водой</h3>
+<p>Смесь, в которой видны отдельные компоненты.</p>
+</div>
+</div>
+
+<h3>Как образуется смесь?</h3>
+<p>Представим, что мы добавили соль в стакан с водой.
+Соль растворяется, и получается солёная вода.</p>
+
+<p>При этом вода и соль не становятся новым химическим веществом.
+Соль можно выделить из раствора выпариванием воды.</p>
+
+<div class="note">
+<strong>Главное отличие:</strong> состав смеси может меняться.
+В одном стакане воды может быть мало соли, а в другом — много.
+</div>
+`
+},
+
+{
+title: "Виды смесей",
+icon: "🔍",
+body: `
+<p class="lead">
+По распределению компонентов смеси бывают однородными
+и неоднородными.
+</p>
+
+<h3>1. Однородные смеси</h3>
+<p>Компоненты равномерно распределены, и смесь выглядит
+одинаковой во всех частях.</p>
+
+<ul>
+<li>Раствор соли в воде.</li>
+<li>Раствор сахара в воде.</li>
+<li>Воздух.</li>
+<li>Раствор спирта в воде.</li>
+</ul>
+
+<h3>2. Неоднородные смеси</h3>
+<p>В таких смесях можно различить отдельные компоненты
+или части смеси.</p>
+
+<ul>
+<li>Вода с песком.</li>
+<li>Вода с растительным маслом.</li>
+<li>Песок с железными опилками.</li>
+<li>Гранит с различимыми минералами.</li>
+</ul>
+
+<div class="note purple">
+Если компоненты смеси равномерно распределены и неразличимы
+невооружённым глазом, смесь обычно называют однородной.
+Если можно увидеть отдельные части — неоднородной.
+</div>
+`
+},
+
+{
+title: "Как разделяют смеси?",
+icon: "⚗️",
+body: `
+<p class="lead">
+Смеси можно разделять физическими способами.
+Метод выбирают в зависимости от свойств компонентов.
+</p>
+
+<div class="cards">
+<div class="card blue">
+<div class="emoji">🧻</div>
+<h3>Фильтрование</h3>
+<p>Отделение нерастворимого твёрдого вещества от жидкости.</p>
+<p><strong>Пример:</strong> песок и вода.</p>
+</div>
+
+<div class="card green">
+<div class="emoji">🧂</div>
+<h3>Выпаривание</h3>
+<p>Удаление жидкости испарением.</p>
+<p><strong>Пример:</strong> получение соли из раствора.</p>
+</div>
+
+<div class="card purple">
+<div class="emoji">🧲</div>
+<h3>Магнит</h3>
+<p>Отделение магнитного материала от немагнитного.</p>
+<p><strong>Пример:</strong> железные опилки и песок.</p>
+</div>
+</div>
+
+<h3>Другие способы</h3>
+
+<ul>
+<li><strong>Отстаивание:</strong> частицы оседают на дно или жидкости образуют отдельные слои.</li>
+<li><strong>Просеивание:</strong> разделение твёрдых частиц по размеру.</li>
+<li><strong>Перегонка:</strong> разделение компонентов с использованием различия в температурах кипения.</li>
+</ul>
+
+<div class="note">
+При фильтровании растворённая соль проходит вместе с водой
+через обычный фильтр. Поэтому для получения соли из солёной воды
+используют выпаривание или другие подходящие методы.
+</div>
+`
+},
+
+{
+title: "Чем вещество отличается от смеси?",
+icon: "⚖️",
+body: `
+<p class="lead">
+Рассмотрим три примера, чтобы не путать чистое вещество и смесь.
+</p>
+
+<h3>Пример 1. Чистая вода</h3>
+<p>Химическая формула H₂O. Это сложное вещество с определённым
+химическим составом.</p>
+
+<h3>Пример 2. Солёная вода</h3>
+<p>Содержит воду и растворённую соль. Это смесь.
+Количество растворённой соли может быть разным.</p>
+
+<h3>Пример 3. Воздух</h3>
+<p>Содержит азот, кислород, аргон, углекислый газ и другие компоненты.
+Это однородная смесь газов.</p>
+
+<div class="table-wrap">
+<table>
+<tr><th>Образец</th><th>Что это?</th></tr>
+<tr><td>Чистая вода</td><td>Сложное вещество</td></tr>
+<tr><td>Кислород O₂</td><td>Простое вещество</td></tr>
+<tr><td>Солёная вода</td><td>Смесь</td></tr>
+<tr><td>Воздух</td><td>Смесь газов</td></tr>
+</table>
+</div>
+
+<div class="note green">
+<strong>Вывод:</strong> химический состав чистого вещества определён,
+а соотношение компонентов смеси может изменяться.
+</div>
+`
+},
+
+{
+title: "Практическая работа",
+icon: "🔬",
+body: `
+<p class="lead">
+Попробуй определить, к какой группе относится каждый пример.
+</p>
+
+<div class="table-wrap">
+<table>
+<tr><th>Пример</th><th>Ответ</th></tr>
+<tr><td>Кислород O₂</td><td>Простое вещество</td></tr>
+<tr><td>Вода H₂O</td><td>Сложное вещество</td></tr>
+<tr><td>Железо Fe</td><td>Простое вещество</td></tr>
+<tr><td>Углекислый газ CO₂</td><td>Сложное вещество</td></tr>
+<tr><td>Воздух</td><td>Смесь</td></tr>
+<tr><td>Солёная вода</td><td>Смесь</td></tr>
+<tr><td>Медь Cu</td><td>Простое вещество</td></tr>
+<tr><td>Песок с водой</td><td>Неоднородная смесь</td></tr>
+<tr><td>Сахар в воде</td><td>Однородная смесь</td></tr>
+<tr><td>Поваренная соль NaCl</td><td>Сложное вещество</td></tr>
+</table>
+</div>
+
+<h3>Задание для самостоятельной работы</h3>
+
+<p>Попробуй объяснить, почему воздух — смесь, а кислород O₂ —
+простое вещество.</p>
+
+<div class="note">
+Подсказка: воздух содержит разные вещества, а молекула O₂
+содержит атомы только одного химического элемента.
+</div>
+`
+},
+
+{
+title: "Тест для закрепления",
+icon: "📝",
+body: `
+<p class="lead">
+Проверь, насколько хорошо ты усвоила материал.
+Выбери один правильный ответ в каждом вопросе.
+</p>
+
+<div id="quizContainer"></div>
+
+<button class="btn primary" onclick="checkQuiz()">
+Проверить ответы
+</button>
+
+<button class="btn" onclick="resetQuiz()">
+Начать заново
+</button>
+
+<div class="score-box" id="scoreBox" aria-live="polite"></div>
+`
+},
+
+{
+title: "Ответы и главные выводы",
+icon: "🎓",
+body: `
+<h3>Правильные ответы к тесту</h3>
+
+<ol>
+<li>В — кислород O₂.</li>
+<li>Г — вода H₂O.</li>
+<li>В — смесь газов.</li>
+<li>Б — неоднородная смесь.</li>
+<li>А — фильтрованием.</li>
+<li>А — выпариванием воды.</li>
+<li>Б — два химических элемента.</li>
+<li>В — смесь может содержать несколько веществ.</li>
+</ol>
+
+<h3>Что мы узнали?</h3>
+
+<ul>
+<li>Простые вещества образованы атомами одного химического элемента.</li>
+<li>Сложные вещества содержат атомы разных химических элементов.</li>
+<li>Чистое вещество имеет определённый химический состав.</li>
+<li>Смесь состоит из двух или более веществ.</li>
+<li>Смеси бывают однородными и неоднородными.</li>
+<li>Смеси можно разделять физическими способами.</li>
+</ul>
+
+<div class="note green">
+<strong>Молодец!</strong> Теперь ты знаешь, чем отличаются
+простые вещества, сложные вещества и смеси.
+Продолжай изучать химию!
+</div>
+
+<button class="btn primary" onclick="showQuiz()">
+Пройти тест ещё раз
+</button>
+`
+}
+];
+
+
+/* ==========================================
+   СОЗДАНИЕ ОГЛАВЛЕНИЯ
+========================================== */
+
+const topicList = document.getElementById("topicList");
+const content = document.getElementById("content");
+
+let currentSlide = 0;
+let currentPage = "home";
+
+function buildNavigation() {
+    topicList.innerHTML = "";
+
+    slides.forEach((slide, index) => {
+        const button = document.createElement("button");
+
+        button.className = "nav-button";
+        button.dataset.title = slide.title.toLowerCase();
+        button.textContent = `Слайд ${index + 1}. ${slide.title}`;
+
+        button.onclick = () => showSlide(index);
+        button.id = `nav-${index}`;
+
+        topicList.appendChild(button);
+    });
+}
+
+
+/* ==========================================
+   ОТОБРАЖЕНИЕ СЛАЙДОВ
+========================================== */
+
+function showSlide(index) {
+    index = Math.max(0, Math.min(slides.length - 1, index));
+
+    currentSlide = index;
+    currentPage = "slide";
+
+    const slide = slides[index];
+
+    content.innerHTML = `
+        <div class="page-heading">
+            <span class="icon">${slide.icon}</span>
+            <h2>Презентация · Слайд ${index + 1}</h2>
+        </div>
+
+        <h2 class="slide-title">${slide.title}</h2>
+
+        <div class="lesson-text">
+            ${slide.body}
+        </div>
+    `;
+
+    document.querySelectorAll("#topicList .nav-button")
+        .forEach(button => button.classList.remove("active"));
+
+    const activeButton = document.getElementById(`nav-${index}`);
+
+    if (activeButton) {
+        activeButton.classList.add("active");
+    }
+
+    document.getElementById("slideCounter").textContent =
+        `Слайд ${index + 1} из ${slides.length}`;
+
+    document.getElementById("prevBtn").disabled = index === 0;
+
+    document.getElementById("nextBtn").disabled =
+        index === slides.length - 1;
+
+    document.getElementById("nextBtn").textContent =
+        index === slides.length - 1 ? "Урок завершён ✓" : "Далее →";
+
+    document.getElementById("progressBar").style.width =
+        `${((index + 1) / slides.length) * 100}%`;
+
+    if (index === 13) {
+        renderQuiz();
+    }
+
+    window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function prevSlide() {
+    if (currentPage === "slide" && currentSlide > 0) {
+        showSlide(currentSlide - 1);
+    } else {
+        goHome();
+    }
+}
+
+function nextSlide() {
+    if (currentPage === "home") {
+        showSlide(0);
+        return;
+    }
+
+    if (currentPage === "slide" && currentSlide < slides.length - 1) {
+        showSlide(currentSlide + 1);
+    }
+}
+
+
+/* ==========================================
+   ГЛАВНАЯ СТРАНИЦА
+========================================== */
+
+function goHome() {
+    currentPage = "home";
+
+    content.innerHTML = `
+        <div class="page-heading">
+            <span class="icon">⚛️</span>
+            <h2>Главная страница</h2>
+        </div>
+
+        <h2 class="slide-title">
+            Простые и сложные вещества. Смеси
+        </h2>
+
+        <p class="lead">
+            Добро пожаловать на интерактивный урок химии!
+            Изучи презентацию, выполни практические задания
+            и проверь свои знания.
+        </p>
+
+        <div class="cards">
+            <div class="card blue">
+                <div class="emoji">🔵</div>
+                <h3>Простые вещества</h3>
+                <p>Состоят из атомов одного химического элемента.</p>
+                <button class="btn primary" onclick="showSlide(4)">
+                    Перейти к теме →
+                </button>
+            </div>
+
+            <div class="card purple">
+                <div class="emoji">🧬</div>
+                <h3>Сложные вещества</h3>
+                <p>Содержат атомы разных химических элементов.</p>
+                <button class="btn primary" onclick="showSlide(5)">
+                    Перейти к теме →
+                </button>
+            </div>
+
+            <div class="card green">
+                <div class="emoji">🧪</div>
+                <h3>Смеси</h3>
+                <p>Состоят из нескольких веществ.</p>
+                <button class="btn primary" onclick="showSlide(8)">
+                    Перейти к теме →
+                </button>
+            </div>
+        </div>
+
+        <div class="note">
+            🎯 <strong>Цель урока:</strong> научиться различать
+            простые и сложные вещества, понимать, что такое смеси,
+            и выбирать способы их разделения.
+        </div>
+
+        <h3>Быстрый доступ</h3>
+
+        <div class="cards">
+            <div class="card">
+                <div class="emoji">📖</div>
+                <h3>Презентация</h3>
+                <button class="btn" onclick="showSlide(0)">
+                    Начать урок
+                </button>
+            </div>
+
+            <div class="card">
+                <div class="emoji">📝</div>
+                <h3>Проверка знаний</h3>
+                <button class="btn" onclick="showQuiz()">
+                    Начать тест
+                </button>
+            </div>
+
+            <div class="card">
+                <div class="emoji">✏️</div>
+                <h3>Домашняя работа</h3>
+                <button class="btn" onclick="showHomework()">
+                    Открыть задание
+                </button>
+            </div>
+        </div>
+    `;
+
+    document.querySelectorAll("#topicList .nav-button")
+        .forEach(button => button.classList.remove("active"));
+
+    document.getElementById("slideCounter").textContent =
+        "Главная страница";
+
+    document.getElementById("prevBtn").disabled = true;
+
+    document.getElementById("nextBtn").disabled = false;
+
+    document.getElementById("nextBtn").textContent = "Начать урок →";
+
+    document.getElementById("progressBar").style.width = "0%";
+
+    window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+
+/* ==========================================
+   ИНТЕРАКТИВНЫЙ ТЕСТ
+========================================== */
+
+const questions = [
+    {
+        q: "1. Какое вещество является простым?",
+        answers: ["H₂O", "CO₂", "O₂", "NaCl"],
+        correct: 2,
+        explanation: "O₂ состоит только из атомов кислорода."
+    },
+    {
+        q: "2. Какое вещество является сложным?",
+        answers: ["Fe", "Cu", "H₂", "H₂O"],
+        correct: 3,
+        explanation: "Вода содержит два элемента: водород и кислород."
+    },
+    {
+        q: "3. Что представляет собой воздух?",
+        answers: [
+            "Простое вещество",
+            "Чистый кислород",
+            "Смесь газов",
+            "Железо"
+        ],
+        correct: 2,
+        explanation: "Воздух состоит из азота, кислорода и других газов."
+    },
+    {
+        q: "4. Какова смесь воды и песка?",
+        answers: [
+            "Однородная",
+            "Неоднородная",
+            "Простое вещество",
+            "Химический элемент"
+        ],
+        correct: 1,
+        explanation: "Песок не растворяется в воде, и его частицы можно отделить."
+    },
+    {
+        q: "5. Как отделить песок от воды?",
+        answers: [
+            "Фильтрованием",
+            "Магнитом",
+            "Просеиванием воздуха",
+            "Растворением песка"
+        ],
+        correct: 0,
+        explanation: "Фильтр задерживает песок, пропуская воду."
+    },
+    {
+        q: "6. Как можно получить соль из солёной воды?",
+        answers: [
+            "Выпариванием воды",
+            "Магнитом",
+            "Просеиванием",
+            "Добавлением песка"
+        ],
+        correct: 0,
+        explanation: "Вода испаряется, а соль остаётся."
+    },
+    {
+        q: "7. Сколько разных химических элементов в H₂O?",
+        answers: ["Один", "Два", "Три", "Четыре"],
+        correct: 1,
+        explanation: "Вода содержит водород H и кислород O."
+    },
+    {
+        q: "8. Какое утверждение верно?",
+        answers: [
+            "Воздух состоит только из кислорода",
+            "Все смеси неоднородные",
+            "Смесь может содержать несколько веществ",
+            "Чистая вода всегда является смесью"
+        ],
+        correct: 2,
+        explanation: "Смеси состоят из нескольких веществ."
+    }
+];
+
+let userAnswers = {};
+
+function renderQuiz() {
+    const quizContainer = document.getElementById("quizContainer");
+
+    if (!quizContainer) return;
+
+    userAnswers = {};
+
+    quizContainer.innerHTML = questions.map((question, qi) => `
+        <div class="quiz-question" id="question-${qi}">
+            <h3>${question.q}</h3>
+
+            ${question.answers.map((answer, ai) => `
+                <button
+                    class="answer"
+                    data-question="${qi}"
+                    data-answer="${ai}"
+                    onclick="selectAnswer(${qi}, ${ai})">
+                    ${String.fromCharCode(1040 + ai)}. ${answer}
+                </button>
+            `).join("")}
+
+            <div class="feedback" id="feedback-${qi}"></div>
+        </div>
+    `).join("");
+
+    const scoreBox = document.getElementById("scoreBox");
+
+    if (scoreBox) {
+        scoreBox.style.display = "none";
+        scoreBox.innerHTML = "";
+    }
+}
+
+function selectAnswer(questionIndex, answerIndex) {
+    if (userAnswers[questionIndex] !== undefined) return;
+
+    userAnswers[questionIndex] = answerIndex;
+
+    const buttons = document.querySelectorAll(
+        `[data-question="${questionIndex}"]`
+    );
+
+    buttons.forEach(button => {
+        button.disabled = true;
+    });
+
+    const selectedButton = document.querySelector(
+        `[data-question="${questionIndex}"][data-answer="${answerIndex}"]`
+    );
+
+    const question = questions[questionIndex];
+
+    const feedback = document.getElementById(
+        `feedback-${questionIndex}`
+    );
+
+    if (answerIndex === question.correct) {
+        selectedButton.classList.add("correct");
+
+        feedback.innerHTML =
+            `✅ Верно! ${question.explanation}`;
+    } else {
+        selectedButton.classList.add("wrong");
+
+        buttons[question.correct].classList.add("correct");
+
+        feedback.innerHTML =
+            `❌ Пока неверно. ${question.explanation}`;
+    }
+}
+
+function checkQuiz() {
+    const answered = Object.keys(userAnswers).length;
+
+    if (answered < questions.length) {
+        alert(
+            `Ты ответила на ${answered} из ${questions.length} вопросов. ` +
+            "Ответь на оставшиеся вопросы."
+        );
+        return;
+    }
+
+    let score = 0;
+
+    questions.forEach((question, index) => {
+        if (userAnswers[index] === question.correct) {
+            score++;
+        }
+    });
+
+    const scoreBox = document.getElementById("scoreBox");
+
+    scoreBox.style.display = "block";
+
+    let message = "";
+
+    if (score === 8) {
+        message = "Превосходно! Ты отлично знаешь тему!";
+    } else if (score >= 6) {
+        message = "Очень хорошо! Ты почти всё усвоила.";
+    } else if (score >= 4) {
+        message = "Неплохо! Повтори несколько тем и попробуй ещё раз.";
+    } else {
+        message = "Не расстраивайся! Повтори презентацию и пройди тест снова.";
+    }
+
+    scoreBox.innerHTML = `
+        <h3>${score} из ${questions.length}</h3>
+        <p>${message}</p>
+        <p>Правильных ответов: ${Math.round(score / questions.length * 100)}%</p>
+        <button class="btn primary" onclick="resetQuiz()">
+            Пройти тест заново
+        </button>
+    `;
+
+    scoreBox.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest"
+    });
+}
+
+function resetQuiz() {
+    renderQuiz();
+}
+
+
+/* ==========================================
+   ОТДЕЛЬНАЯ СТРАНИЦА ТЕСТА
+========================================== */
+
+function showQuiz() {
+    currentPage = "quiz";
+
+    content.innerHTML = `
+        <div class="page-heading">
+            <span class="icon">📝</span>
+            <h2>Проверочный тест</h2>
+        </div>
+
+        <h2 class="slide-title">
+            Проверим знания!
+        </h2>
+
+        <p class="lead">
+            Ответь на 8 вопросов по теме
+            «Простые и сложные вещества. Смеси».
+        </p>
+
+        <div id="quizContainer"></div>
+
+        <button class="btn primary" onclick="checkQuiz()">
+            Проверить ответы
+        </button>
+
+        <button class="btn" onclick="resetQuiz()">
+            Начать заново
+        </button>
+
+        <div class="score-box" id="scoreBox" aria-live="polite"></div>
+    `;
+
+    renderQuiz();
+
+    document.getElementById("slideCounter").textContent =
+        "Проверочный тест";
+
+    document.getElementById("prevBtn").disabled = false;
+
+    document.getElementById("nextBtn").disabled = true;
+
+    document.getElementById("progressBar").style.width = "100%";
+
+    window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+
+/* ==========================================
+   ДОМАШНЕЕ ЗАДАНИЕ
+========================================== */
+
+function showHomework() {
+    currentPage = "homework";
+
+    content.innerHTML = `
+        <div class="page-heading">
+            <span class="icon">✏️</span>
+            <h2>Домашнее задание</h2>
+        </div>
+
+        <h2 class="slide-title">Закрепляем знания</h2>
+
+        <div class="lesson-text">
+            <div class="note">
+                Выполни задания в тетради, а затем обсуди ответы
+                с преподавателем.
+            </div>
+
+            <h3>Задание 1. Простые вещества</h3>
+            <p>Запиши пять примеров простых веществ и их формулы.</p>
+
+            <h3>Задание 2. Сложные вещества</h3>
+            <p>Запиши пять примеров сложных веществ и укажи,
+            какие химические элементы входят в их состав.</p>
+
+            <h3>Задание 3. Смеси вокруг нас</h3>
+            <p>Приведи пять примеров смесей, которые встречаются
+            дома, в школе или на улице.</p>
+
+            <h3>Задание 4. Разделение смесей</h3>
+            <ol>
+                <li>Как отделить песок от воды?</li>
+                <li>Как получить соль из солёной воды?</li>
+                <li>Как отделить железные опилки от песка?</li>
+            </ol>
+
+            <h3>Задание 5. Подумай и объясни</h3>
+            <p>Почему воздух — это смесь, а чистая вода —
+            сложное вещество?</p>
+
+            <div class="note green">
+                Совет: используй определения из презентации
+                и обязательно объясняй, почему ты выбрала такой ответ.
+            </div>
+
+            <button class="btn primary" onclick="showSlide(14)">
+                Посмотреть выводы урока →
+            </button>
+        </div>
+    `;
+
+    document.getElementById("slideCounter").textContent =
+        "Домашнее задание";
+
+    document.getElementById("prevBtn").disabled = false;
+
+    document.getElementById("nextBtn").disabled = true;
+
+    window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+
+/* ==========================================
+   СТРАНИЦА ОБ АВТОРЕ
+========================================== */
+
+function showAbout() {
+    currentPage = "about";
+
+    content.innerHTML = `
+        <div class="page-heading">
+            <span class="icon">👨‍🏫</span>
+            <h2>Об авторе</h2>
+        </div>
+
+        <div class="card blue">
+            <div class="emoji">⚛️</div>
+
+            <h2>Джураев Муслим Тариэльевич</h2>
+
+            <p>Преподаватель</p>
+            <p>Учебный предмет: химия</p>
+            <p>Класс: 6</p>
+
+            <div class="note">
+                Цель сайта — сделать изучение химии понятным,
+                наглядным и интересным для школьников.
+            </div>
+        </div>
+
+        <div class="card green" style="margin-top:20px">
+            <div class="emoji">👩‍🎓</div>
+            <h3>Ученица Ева</h3>
+            <p>6 класс</p>
+            <p>Тема: простые и сложные вещества. Смеси.</p>
+        </div>
+
+        <button class="btn primary" style="margin-top:20px"
+            onclick="goHome()">
+            Вернуться на главную
+        </button>
+    `;
+
+    document.getElementById("slideCounter").textContent =
+        "Об авторе";
+
+    document.getElementById("prevBtn").disabled = false;
+
+    document.getElementById("nextBtn").disabled = true;
+
+    window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+
+/* ==========================================
+   ПОИСК ПО ТЕМАМ
+========================================== */
+
+function filterTopics() {
+    const query = document.getElementById("searchInput")
+        .value.toLowerCase().trim();
+
+    document.querySelectorAll("#topicList .nav-button")
+        .forEach(button => {
+            const title = button.dataset.title || "";
+
+            button.classList.toggle(
+                "hidden",
+                !title.includes(query)
+            );
+        });
+}
+
+
+/* ==========================================
+   СВЕТЛАЯ И ТЁМНАЯ ТЕМА
+========================================== */
+
+function toggleTheme() {
+    document.body.classList.toggle("dark");
+
+    const isDark = document.body.classList.contains("dark");
+
+    document.getElementById("themeBtn").textContent =
+        isDark ? "☀️ Светлая тема" : "🌙 Тёмная тема";
+
+    try {
+        localStorage.setItem(
+            "chemistry-theme",
+            isDark ? "dark" : "light"
+        );
+    } catch (error) {
+        // Сайт продолжает работать, даже если сохранение недоступно.
+    }
+}
+
+function loadTheme() {
+    try {
+        const theme = localStorage.getItem("chemistry-theme");
+
+        if (theme === "dark") {
+            document.body.classList.add("dark");
+
+            document.getElementById("themeBtn").textContent =
+                "☀️ Светлая тема";
+        }
+    } catch (error) {
+        // Используется стандартная светлая тема.
+    }
+}
+
+
+/* ==========================================
+   ЗАПУСК
+========================================== */
+
+buildNavigation();
+loadTheme();
+</script>
+
+</body>
+</html>
